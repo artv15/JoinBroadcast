@@ -10,7 +10,7 @@ namespace JoinBroadcast
         public static JoinBroadcast Singleton;
         Config _config;
 
-        public override string Name => "test";
+        public override string Name => "JoinBroadcast";
         public override string Author => "MotVARD";
         public override Version Version => new Version(1, 0, 0);
         public override Version RequiredExiledVersion { get; } = new Version(8, 2, 1);
@@ -22,8 +22,6 @@ namespace JoinBroadcast
             _config = Config;
 
             Exiled.Events.Handlers.Player.Verified += EventHandler.OnJoining;
-
-            base.OnEnabled();
         }
         public override void OnDisabled()
         {
@@ -32,9 +30,6 @@ namespace JoinBroadcast
             EventHandler = null;
             _config = null;
             Singleton = null;
-
-            base.OnDisabled();
-
         }
     }
 }

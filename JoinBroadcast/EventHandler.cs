@@ -12,11 +12,7 @@ namespace JoinBroadcast
     {
         Config _config = JoinBroadcast.Singleton.Config;
 
-        public void OnJoining(VerifiedEventArgs ev)
-        {
-            string joinBroadcastBuilder = _config.JoinBroadcast.Replace("%PlayerName%", ev.Player.Nickname);
-
-            ev.Player.Broadcast(_config.JoinBroadCastDuration, joinBroadcastBuilder);
-        }
+        public void OnJoining(VerifiedEventArgs ev) =>
+            ev.Player.Broadcast(_config.JoinBroadCastDuration, _config.JoinBroadcast.Replace("%PlayerName%", ev.Player.Nickname)); //make it one-line
     }
 }
